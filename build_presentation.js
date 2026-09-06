@@ -4,7 +4,6 @@ const pres = new pptxgen();
 pres.layout = 'LAYOUT_16x9';
 
 // Define theme colors
-const TEAL = '008080';
 const NAVY = '003366';
 const BLUE = '006699';
 const DARK_GRAY = '222222';
@@ -13,13 +12,19 @@ const WHITE = 'FFFFFF';
 const GREEN = '2E7D32';
 const RED = 'C62828';
 
-// Helper for generic slide header
+// Image paths from Colab run
+const IMG_WATER_IRRIG = 'C:/Users/ocotp/.gemini/antigravity/brain/2b64254e-8329-498c-9b37-019e1b1a9e41/.user_uploaded/media_1788676491577.png';
+const IMG_YIELD_PROFIT = 'C:/Users/ocotp/.gemini/antigravity/brain/2b64254e-8329-498c-9b37-019e1b1a9e41/.user_uploaded/media_1788676491579.png';
+const IMG_KPI_REGIONAL = 'C:/Users/ocotp/.gemini/antigravity/brain/2b64254e-8329-498c-9b37-019e1b1a9e41/.user_uploaded/media_1788676491584.png';
+const IMG_CORR_SCATTER = 'C:/Users/ocotp/.gemini/antigravity/brain/2b64254e-8329-498c-9b37-019e1b1a9e41/.user_uploaded/media_1788676491659.png';
+
+// Helper for slide header
 function addSlideHeader(s, title, category) {
   s.background = { color: LIGHT_BG };
-  s.addShape(pres.ShapeType.rect, { x: 0, y: 0, w: '100%', h: 1.0, fill: { color: NAVY } });
-  s.addText(title, { x: 0.8, y: 0.15, w: 10, h: 0.7, fontSize: 24, color: WHITE, bold: true });
+  s.addShape(pres.ShapeType.rect, { x: 0, y: 0, w: '100%', h: 0.9, fill: { color: NAVY } });
+  s.addText(title, { x: 0.8, y: 0.12, w: 9.5, h: 0.65, fontSize: 22, color: WHITE, bold: true });
   if (category) {
-    s.addText(category, { x: 9.5, y: 0.25, w: 3.2, h: 0.5, fontSize: 11, color: 'BBDEFB', align: 'right' });
+    s.addText(category, { x: 9.2, y: 0.2, w: 3.5, h: 0.45, fontSize: 11, color: 'BBDEFB', align: 'right' });
   }
 }
 
@@ -28,15 +33,15 @@ function addSlideHeader(s, title, category) {
 // ==========================================
 let slide = pres.addSlide();
 slide.background = { color: 'F0F8FF' };
-slide.addShape(pres.ShapeType.rect, { x: 0, y: 0, w: '100%', h: 0.5, fill: { color: BLUE } });
+slide.addShape(pres.ShapeType.rect, { x: 0, y: 0, w: '100%', h: 0.45, fill: { color: BLUE } });
 slide.addText('VOIS AICTE Internship Batch 1 (2026-2027) Major Project', {
-  x: 0.8, y: 0.1, w: 11.5, h: 0.35, fontSize: 13, color: WHITE, bold: true, align: 'center'
+  x: 0.8, y: 0.08, w: 11.5, h: 0.3, fontSize: 12.5, color: WHITE, bold: true, align: 'center'
 });
 slide.addText('Seasonal Agriculture Performance Analysis', {
-  x: 0.8, y: 1.6, w: 11.7, h: 1.1, fontSize: 32, color: NAVY, bold: true, align: 'center'
+  x: 0.8, y: 1.4, w: 11.7, h: 1.1, fontSize: 32, color: NAVY, bold: true, align: 'center'
 });
 slide.addText('Empirical Data Analytics & Crop Economics Across 4,000 Multi-State Farm Observations', {
-  x: 1.0, y: 2.8, w: 11.3, h: 0.5, fontSize: 15, color: '555555', italic: true, align: 'center'
+  x: 1.0, y: 2.55, w: 11.3, h: 0.5, fontSize: 15, color: '555555', italic: true, align: 'center'
 });
 
 const infoBox = [
@@ -52,7 +57,7 @@ const infoBox = [
   { text: 'VOIS for Tech - Data Analytics Internship (Edunet Foundation & Vodafone Idea Foundation)', options: { color: DARK_GRAY } }
 ];
 slide.addText(infoBox, {
-  x: 2.2, y: 3.6, w: 8.9, h: 2.9, fontSize: 13.5, fill: { color: WHITE }, line: { color: 'CCCCCC', width: 1 },
+  x: 2.2, y: 3.4, w: 8.9, h: 3.0, fontSize: 13.5, fill: { color: WHITE }, line: { color: 'CCCCCC', width: 1 },
   margin: 15, align: 'left', lineSpacing: 20
 });
 
@@ -71,7 +76,7 @@ slide.addText([
   { text: '• Monsoon Pest Vulnerability: Prolonged high humidity (>71% in Kharif) drives disease and pest outbreak risks above 54%, eroding gross margins.\n\n', options: { fontSize: 13.5 } },
   { text: 'Project Objective:\n', options: { bold: true, fontSize: 15, color: NAVY } },
   { text: '• Investigate 4,000 multi-state farm observations using statistical data analytics to benchmark seasonal performance, test hypotheses, and build data-driven recommendations.', options: { fontSize: 13.5 } }
-], { x: 0.8, y: 1.3, w: 11.7, h: 5.8, color: DARK_GRAY, margin: 10 });
+], { x: 0.8, y: 1.2, w: 11.7, h: 5.8, color: DARK_GRAY, margin: 10 });
 
 // ==========================================
 // Slide 3: Project Description
@@ -88,7 +93,7 @@ slide.addText([
   { text: '3. In-Depth Seasonal EDA: Systematically addressed all 12 key AICTE research questions.\n', options: { fontSize: 13.5 } },
   { text: '4. Statistical Validation: One-Way ANOVA and Kruskal-Wallis tests verifying statistical significance across seasons.\n', options: { fontSize: 13.5 } },
   { text: '5. Actionable Roadmap: Developed seasonal crop planning and micro-irrigation guidelines.', options: { fontSize: 13.5 } }
-], { x: 0.8, y: 1.3, w: 11.7, h: 5.8, color: DARK_GRAY, margin: 10 });
+], { x: 0.8, y: 1.2, w: 11.7, h: 5.8, color: DARK_GRAY, margin: 10 });
 
 // ==========================================
 // Slide 4: End Users
@@ -102,11 +107,10 @@ const users = [
   { role: '📊 Agri-Fintech & Crop Insurance Companies', desc: 'Provides empirical default risk profiles (Zaid has a 64.5% farm loss rate) to calculate fair, season-adjusted crop insurance premiums and loan terms.' },
   { role: '🏛️ Government & Agricultural Planners', desc: 'Informs Minimum Support Price (MSP) review and seasonal power and fertilizer distribution frameworks.' }
 ];
-
 users.forEach((u, idx) => {
-  slide.addShape(pres.ShapeType.roundRect, { x: 0.8, y: 1.3 + (idx * 1.1), w: 11.7, h: 0.95, fill: { color: WHITE }, line: { color: 'DDDDDD' } });
-  slide.addText(u.role, { x: 1.0, y: 1.35 + (idx * 1.1), w: 4.8, h: 0.4, fontSize: 13.5, bold: true, color: NAVY });
-  slide.addText(u.desc, { x: 1.0, y: 1.75 + (idx * 1.1), w: 11.3, h: 0.45, fontSize: 12, color: DARK_GRAY });
+  slide.addShape(pres.ShapeType.roundRect, { x: 0.8, y: 1.2 + (idx * 1.1), w: 11.7, h: 0.95, fill: { color: WHITE }, line: { color: 'DDDDDD' } });
+  slide.addText(u.role, { x: 1.0, y: 1.25 + (idx * 1.1), w: 4.8, h: 0.4, fontSize: 13.5, bold: true, color: NAVY });
+  slide.addText(u.desc, { x: 1.0, y: 1.65 + (idx * 1.1), w: 11.3, h: 0.45, fontSize: 12, color: DARK_GRAY });
 });
 
 // ==========================================
@@ -125,237 +129,180 @@ const techList = [
 techList.forEach((t, idx) => {
   const col = idx % 2;
   const row = Math.floor(idx / 2);
-  slide.addShape(pres.ShapeType.roundRect, { x: 0.8 + (col * 6.0), y: 1.4 + (row * 1.8), w: 5.7, h: 1.5, fill: { color: WHITE }, line: { color: 'CCDDEE', width: 1.5 } });
-  slide.addText(t.tool, { x: 1.0 + (col * 6.0), y: 1.55 + (row * 1.8), w: 5.3, h: 0.35, fontSize: 15, bold: true, color: BLUE });
-  slide.addText(t.desc, { x: 1.0 + (col * 6.0), y: 1.95 + (row * 1.8), w: 5.3, h: 0.85, fontSize: 12.5, color: DARK_GRAY });
+  slide.addShape(pres.ShapeType.roundRect, { x: 0.8 + (col * 6.0), y: 1.3 + (row * 1.8), w: 5.7, h: 1.5, fill: { color: WHITE }, line: { color: 'CCDDEE', width: 1.5 } });
+  slide.addText(t.tool, { x: 1.0 + (col * 6.0), y: 1.45 + (row * 1.8), w: 5.3, h: 0.35, fontSize: 15, bold: true, color: BLUE });
+  slide.addText(t.desc, { x: 1.0 + (col * 6.0), y: 1.85 + (row * 1.8), w: 5.3, h: 0.85, fontSize: 12.5, color: DARK_GRAY });
 });
 
 // ==========================================
-// Slide 6: Results - Seasonal Overview
+// Slide 6: RESULTS 1 - Yield & Profitability (WITH EMBEDDED SCREENSHOT 2)
 // ==========================================
 slide = pres.addSlide();
-addSlideHeader(slide, 'Results: Seasonal Performance & Economics', 'Slide 6 of 14');
-slide.addText('Empirical Comparison Across 4,000 Farms (Kharif vs Rabi vs Zaid):', {
-  x: 0.8, y: 1.2, w: 11.7, h: 0.4, fontSize: 15, bold: true, color: NAVY
+addSlideHeader(slide, 'RESULTS: Seasonal Yield & Crop Profitability Ranking', 'Slide 6 of 14 [Code Output]');
+
+// Embed Image 2 (Figure 1A & 1B)
+slide.addImage({
+  path: IMG_YIELD_PROFIT,
+  x: 0.8, y: 1.1, w: 7.2, h: 3.2
 });
 
-const seasonTable = [
+slide.addShape(pres.ShapeType.roundRect, {
+  x: 8.2, y: 1.1, w: 4.3, h: 5.8, fill: { color: WHITE }, line: { color: 'B0BEC5' }
+});
+
+slide.addText([
+  { text: 'Key Data Takeaways:\n', options: { bold: true, fontSize: 14, color: NAVY } },
+  { text: '• Figure 1A (Yield Boxplot):\n', options: { bold: true, fontSize: 12.5, color: BLUE } },
+  { text: '  - Kharif mean yield is highest at 5.64 t/ha, followed by Rabi (5.08 t/ha) and Zaid (4.67 t/ha).\n  - Outliers (>40 t/ha) reflect sugarcane stalk harvest.\n\n', options: { fontSize: 11.5 } },
+  { text: '• Figure 1B (Profit Ranking):\n', options: { bold: true, fontSize: 12.5, color: BLUE } },
+  { text: '  - Sugarcane (+₹96.8K/ha) and Chilli (+₹91.8K/ha) lead agricultural profitability.\n  - Cotton (+₹16.2K/ha) and Groundnut (+₹7.4K/ha) remain solvent.\n  - Severe Cereal Deficit: Pulses (-₹546/ha), Maize (-₹10.3K/ha), Rice (-₹13.4K/ha), and Wheat (-₹16.2K/ha) show negative net margins.', options: { fontSize: 11.5 } }
+], { x: 8.35, y: 1.25, w: 4.0, h: 5.5, color: DARK_GRAY });
+
+const s6Table = [
   [
     { text: 'Cropping Season', options: { bold: true, fill: { color: NAVY }, color: WHITE } },
     { text: 'Sample (N)', options: { bold: true, fill: { color: NAVY }, color: WHITE } },
-    { text: 'Mean Yield (t/ha)', options: { bold: true, fill: { color: NAVY }, color: WHITE } },
-    { text: 'Avg Cost (INR)', options: { bold: true, fill: { color: NAVY }, color: WHITE } },
-    { text: 'Avg Revenue (INR)', options: { bold: true, fill: { color: NAVY }, color: WHITE } },
-    { text: 'Avg Net Profit (INR)', options: { bold: true, fill: { color: NAVY }, color: WHITE } },
-    { text: 'Solvency Rate (%)', options: { bold: true, fill: { color: NAVY }, color: WHITE } }
+    { text: 'Mean Yield', options: { bold: true, fill: { color: NAVY }, color: WHITE } },
+    { text: 'Avg Farm Profit', options: { bold: true, fill: { color: NAVY }, color: WHITE } },
+    { text: 'Solvency (%)', options: { bold: true, fill: { color: NAVY }, color: WHITE } }
   ],
   [
-    { text: 'Kharif (Monsoon)', options: { bold: true } },
-    { text: '1,779 (44.5%)' },
-    { text: '5.64 t/ha' },
-    { text: 'INR 5,31,804' },
-    { text: 'INR 7,10,719' },
-    { text: '+INR 1,78,915', options: { bold: true, color: GREEN } },
-    { text: '57.8%', options: { bold: true, color: GREEN } }
+    { text: 'Kharif (Monsoon)' }, { text: '1,779 (44.5%)' }, { text: '5.64 t/ha' },
+    { text: '+₹1,78,915', options: { bold: true, color: GREEN } }, { text: '57.8%', options: { bold: true, color: GREEN } }
   ],
   [
-    { text: 'Rabi (Winter)', options: { bold: true } },
-    { text: '1,627 (40.7%)' },
-    { text: '5.08 t/ha' },
-    { text: 'INR 5,13,837' },
-    { text: 'INR 6,01,526' },
-    { text: '+INR 87,689', options: { bold: true, color: GREEN } },
-    { text: '48.9%' }
+    { text: 'Rabi (Winter)' }, { text: '1,627 (40.7%)' }, { text: '5.08 t/ha' },
+    { text: '+₹87,689', options: { bold: true, color: GREEN } }, { text: '48.9%' }
   ],
   [
-    { text: 'Zaid (Summer)', options: { bold: true } },
-    { text: '594 (14.8%)' },
-    { text: '4.67 t/ha' },
-    { text: 'INR 5,43,977' },
-    { text: 'INR 5,19,172' },
-    { text: '-INR 24,805', options: { bold: true, color: RED } },
-    { text: '35.5%', options: { bold: true, color: RED } }
+    { text: 'Zaid (Summer)' }, { text: '594 (14.8%)' }, { text: '4.67 t/ha' },
+    { text: '-₹24,805', options: { bold: true, color: RED } }, { text: '35.5%', options: { bold: true, color: RED } }
   ]
 ];
-slide.addTable(seasonTable, { x: 0.8, y: 1.7, w: 11.7, h: 2.3, fontSize: 12, align: 'center', border: { pt: 1, color: 'CCCCCC' } });
-
-slide.addText([
-  { text: 'Key Findings:\n', options: { bold: true, fontSize: 14.5, color: NAVY } },
-  { text: '• Kharif generates the highest average net return (+INR 1.79 Lakh) driven by sugarcane tonnage and monsoon rainwater availability.\n', options: { fontSize: 13 } },
-  { text: '• Rabi delivers stable economic performance (+INR 87.7K) with low temperature variability, though cereal margins are compressed.\n', options: { fontSize: 13 } },
-  { text: '• Critical Zaid Deficit: Summer season records an average NET LOSS (-INR 24.8K). Almost two-thirds of summer farms (64.5%) lose money due to high irrigation pumping bills and heat-induced yield suppression.', options: { fontSize: 13, bold: true, color: RED } }
-], { x: 0.8, y: 4.3, w: 11.7, h: 2.8, color: DARK_GRAY });
+slide.addTable(s6Table, { x: 0.8, y: 4.5, w: 7.2, h: 2.4, fontSize: 11, align: 'center', border: { pt: 1, color: 'CCCCCC' } });
 
 // ==========================================
-// Slide 7: Results - Environmental
+// Slide 7: RESULTS 2 - Climatological Dynamics (WITH EMBEDDED SCREENSHOT 4)
 // ==========================================
 slide = pres.addSlide();
-addSlideHeader(slide, 'Results: Environmental & Soil Dynamics', 'Slide 7 of 14');
-const envCards = [
-  { title: '🌧️ Rainfall Dynamics', text: '• Kharif: 852.1 mm average (peaks up to 1,395 mm).\n• Rabi: 436.0 mm average.\n• Zaid: 299.4 mm average.\nInsight: Summer agriculture cannot rely on ambient precipitation; irrigation is 100% compulsory.' },
-  { title: '🌡️ Thermal & Solar Patterns', text: '• Temperature: Zaid averages 31.0°C (peaks at 39.7°C) vs Rabi at 23.5°C.\n• Sunlight Hours: Zaid receives 8.18 hrs/day vs Kharif at 6.79 hrs/day.\nInsight: Zaid crops suffer high evapotranspiration and thermal stress.' },
-  { title: '💧 Soil Moisture & pH', text: '• Soil Moisture: Peaks during Kharif (30.8%) due to monsoon soaking; drops to 18.6% in Zaid.\n• Soil pH: Relatively neutral across seasons (6.7–6.8 mean).\nInsight: Moisture retention (mulching/drip) is mandatory in summer.' },
-  { title: '🐛 Disease & Pest Risk', text: '• Kharif: 54.5% average pest risk (high humidity >71.8% promotes fungal/insect vectors).\n• Rabi: 40.5% average pest risk.\n• Zaid: 38.2% average pest risk.\nInsight: Monsoons demand proactive pest management.' }
-];
+addSlideHeader(slide, 'RESULTS: Climatological Dynamics & Correlation Analysis', 'Slide 7 of 14 [Code Output]');
 
-envCards.forEach((c, idx) => {
-  const col = idx % 2;
-  const row = Math.floor(idx / 2);
-  slide.addShape(pres.ShapeType.roundRect, { x: 0.8 + (col * 6.0), y: 1.3 + (row * 2.8), w: 5.7, h: 2.6, fill: { color: WHITE }, line: { color: 'B0BEC5' } });
-  slide.addText(c.title, { x: 1.0 + (col * 6.0), y: 1.45 + (row * 2.8), w: 5.3, h: 0.4, fontSize: 15, bold: true, color: NAVY });
-  slide.addText(c.text, { x: 1.0 + (col * 6.0), y: 1.9 + (row * 2.8), w: 5.3, h: 1.8, fontSize: 12.5, color: DARK_GRAY });
+// Embed Image 4 (Figure 2A & 2B)
+slide.addImage({
+  path: IMG_CORR_SCATTER,
+  x: 0.8, y: 1.1, w: 7.2, h: 3.2
 });
 
+slide.addShape(pres.ShapeType.roundRect, {
+  x: 8.2, y: 1.1, w: 4.3, h: 5.8, fill: { color: WHITE }, line: { color: 'B0BEC5' }
+});
+
+slide.addText([
+  { text: 'Correlation & Climate Insights:\n', options: { bold: true, fontSize: 14, color: NAVY } },
+  { text: '• Figure 2A (Correlation Heatmap):\n', options: { bold: true, fontSize: 12.5, color: BLUE } },
+  { text: '  - Rainfall vs Pest Risk (r = +0.62) & Humidity vs Pest Risk (r = +0.55): Confirms moist monsoon conditions trigger disease outbreaks.\n  - Soil Moisture vs Rainfall (r = +0.52): Strong hydrologic coupling.\n  - Pesticide vs Pest Risk (r = -0.47): Protective effect of timely chemical control.\n\n', options: { fontSize: 11.5 } },
+  { text: '• Figure 2B (Rainfall vs Yield Scatter):\n', options: { bold: true, fontSize: 12.5, color: BLUE } },
+  { text: '  - Flat regression slope indicates that sheer rainfall volume alone does not guarantee higher yield—drainage and crop choice are critical.\n  - Sugarcane (points at top) thrives in Kharif (>800 mm rain).', options: { fontSize: 11.5 } }
+], { x: 8.35, y: 1.25, w: 4.0, h: 5.5, color: DARK_GRAY });
+
+const s7Metrics = [
+  [
+    { text: 'Season', options: { bold: true, fill: { color: NAVY }, color: WHITE } },
+    { text: 'Rainfall (mm)', options: { bold: true, fill: { color: NAVY }, color: WHITE } },
+    { text: 'Temperature (°C)', options: { bold: true, fill: { color: NAVY }, color: WHITE } },
+    { text: 'Humidity (%)', options: { bold: true, fill: { color: NAVY }, color: WHITE } },
+    { text: 'Sunlight (hrs/day)', options: { bold: true, fill: { color: NAVY }, color: WHITE } },
+    { text: 'Pest Risk (%)', options: { bold: true, fill: { color: NAVY }, color: WHITE } }
+  ],
+  [ { text: 'Kharif' }, { text: '852.1 mm' }, { text: '28.5°C' }, { text: '71.8%' }, { text: '6.79 hrs' }, { text: '54.5%', options: { bold: true, color: RED } } ],
+  [ { text: 'Rabi' }, { text: '436.0 mm' }, { text: '23.5°C' }, { text: '57.9%' }, { text: '7.59 hrs' }, { text: '40.5%' } ],
+  [ { text: 'Zaid' }, { text: '299.4 mm' }, { text: '31.0°C' }, { text: '52.0%' }, { text: '8.18 hrs' }, { text: '38.2%' } ]
+];
+slide.addTable(s7Metrics, { x: 0.8, y: 4.5, w: 7.2, h: 2.4, fontSize: 11, align: 'center', border: { pt: 1, color: 'CCCCCC' } });
+
 // ==========================================
-// Slide 8: Results - Irrigation & Resource Efficiency
+// Slide 8: RESULTS 3 - Irrigation Efficiency (WITH EMBEDDED SCREENSHOT 1)
 // ==========================================
 slide = pres.addSlide();
-addSlideHeader(slide, 'Results: Irrigation Methods & Efficiency Benchmark', 'Slide 8 of 14');
+addSlideHeader(slide, 'RESULTS: Irrigation Systems & Water Efficiency Distributions', 'Slide 8 of 14 [Code Output]');
 
-const irriTable = [
+// Embed Image 1 (Figure 1C & 1D)
+slide.addImage({
+  path: IMG_WATER_IRRIG,
+  x: 0.8, y: 1.1, w: 7.2, h: 3.2
+});
+
+slide.addShape(pres.ShapeType.roundRect, {
+  x: 8.2, y: 1.1, w: 4.3, h: 5.8, fill: { color: WHITE }, line: { color: 'B0BEC5' }
+});
+
+slide.addText([
+  { text: 'Irrigation & Hydrologic Insights:\n', options: { bold: true, fontSize: 14, color: NAVY } },
+  { text: '• Figure 1C (Efficiency Distributions):\n', options: { bold: true, fontSize: 12.5, color: BLUE } },
+  { text: '  - Zaid water efficiency curve is shifted leftwards (mean 4.41 t/1000m³) due to high evaporative demand.\n  - Kharif and Rabi exhibit long right tails reflecting micro-drip irrigated sugarcane/maize farms (>20 t/1000m³).\n\n', options: { fontSize: 11.5 } },
+  { text: '• Figure 1D (Irrigation Proportions):\n', options: { bold: true, fontSize: 12.5, color: BLUE } },
+  { text: '  - Flood irrigation (orange) accounts for 32–33% across all seasons.\n  - Drip (red) represents 23% of farms.\n  - Sprinkler (purple) represents 18–20% of farms.\n  - Rainfed (green) represents 26% in Kharif/Rabi, dropping in summer.', options: { fontSize: 11.5 } }
+], { x: 8.35, y: 1.25, w: 4.0, h: 5.5, color: DARK_GRAY });
+
+const s8Table = [
   [
     { text: 'Irrigation Method', options: { bold: true, fill: { color: NAVY }, color: WHITE } },
-    { text: 'Sample (N)', options: { bold: true, fill: { color: NAVY }, color: WHITE } },
-    { text: 'Water Efficiency (t/1000m³)', options: { bold: true, fill: { color: NAVY }, color: WHITE } },
-    { text: 'Mean Water Used (m³)', options: { bold: true, fill: { color: NAVY }, color: WHITE } },
-    { text: 'Mean Farm Profit (INR)', options: { bold: true, fill: { color: NAVY }, color: WHITE } }
+    { text: 'Observations (N)', options: { bold: true, fill: { color: NAVY }, color: WHITE } },
+    { text: 'Water Efficiency', options: { bold: true, fill: { color: NAVY }, color: WHITE } },
+    { text: 'Mean Groundwater Used', options: { bold: true, fill: { color: NAVY }, color: WHITE } },
+    { text: 'Mean Net Profit', options: { bold: true, fill: { color: NAVY }, color: WHITE } }
   ],
-  [
-    { text: 'Drip Irrigation', options: { bold: true } },
-    { text: '915 (22.9%)' },
-    { text: '6.27 t/1000m³', options: { bold: true, color: GREEN } },
-    { text: '6,009 m³' },
-    { text: '+INR 2,19,626', options: { bold: true, color: GREEN } }
-  ],
-  [
-    { text: 'Sprinkler Irrigation', options: { bold: true } },
-    { text: '734 (18.4%)' },
-    { text: '4.67 t/1000m³' },
-    { text: '5,885 m³' },
-    { text: '+INR 91,121' }
-  ],
-  [
-    { text: 'Flood Irrigation', options: { bold: true } },
-    { text: '1,310 (32.8%)' },
-    { text: '3.44 t/1000m³', options: { bold: true, color: RED } },
-    { text: '9,812 m³', options: { color: RED } },
-    { text: '+INR 73,354' }
-  ],
-  [
-    { text: 'Rainfed Farming', options: { bold: true } },
-    { text: '1,041 (26.0%)' },
-    { text: '7.56 t/1000m³*' },
-    { text: '3,248 m³ (groundwater)' },
-    { text: '+INR 79,050' }
-  ]
+  [ { text: 'Drip Irrigation', options: { bold: true } }, { text: '915 (22.9%)' }, { text: '6.27 t/1000m³', options: { bold: true, color: GREEN } }, { text: '6,009 m³' }, { text: '+₹2,19,626', options: { bold: true, color: GREEN } } ],
+  [ { text: 'Sprinkler Irrigation', options: { bold: true } }, { text: '734 (18.4%)' }, { text: '4.67 t/1000m³' }, { text: '5,885 m³' }, { text: '+₹91,121' } ],
+  [ { text: 'Flood Irrigation', options: { bold: true } }, { text: '1,310 (32.8%)' }, { text: '3.44 t/1000m³', options: { bold: true, color: RED } }, { text: '9,812 m³' }, { text: '+₹73,354' } ],
+  [ { text: 'Rainfed Farming', options: { bold: true } }, { text: '1,041 (26.0%)' }, { text: '7.56 t/1000m³*' }, { text: '3,248 m³' }, { text: '+₹79,050' } ]
 ];
-slide.addTable(irriTable, { x: 0.8, y: 1.4, w: 11.7, h: 2.6, fontSize: 12.5, align: 'center', border: { pt: 1, color: 'CCCCCC' } });
-
-slide.addText([
-  { text: 'Critical Irrigation Inefficiency Findings:\n', options: { bold: true, fontSize: 14.5, color: NAVY } },
-  { text: '• Drip Irrigation is 82.3% more water-efficient than Flood Irrigation (6.27 vs 3.44 t/1000m³) and generates 3.0x higher average profit (+INR 2.20L vs +INR 73.4K).\n', options: { fontSize: 13 } },
-  { text: '• The Summer Flood Trap: In Zaid, farms practicing flood irrigation suffered the lowest efficiency (2.1 t/1000m³) due to severe evaporative losses, losing an average of INR 68,400 per farm.\n', options: { fontSize: 13 } },
-  { text: '• Policy Implication: Mandating micro-drip adoption in summer cycles would save up to 3,800 m³ of groundwater per farm while boosting solvency.', options: { fontSize: 13, bold: true, color: BLUE } }
-], { x: 0.8, y: 4.4, w: 11.7, h: 2.7, color: DARK_GRAY });
+slide.addTable(s8Table, { x: 0.8, y: 4.5, w: 7.2, h: 2.4, fontSize: 10.5, align: 'center', border: { pt: 1, color: 'CCCCCC' } });
 
 // ==========================================
-// Slide 9: Results - Crop Economics
+// Slide 9: RESULTS 4 - Dashboard & Regional Matrix (WITH EMBEDDED SCREENSHOT 3)
 // ==========================================
 slide = pres.addSlide();
-addSlideHeader(slide, 'Results: The Cereal vs. Cash Crop Divide', 'Slide 9 of 14');
+addSlideHeader(slide, 'RESULTS: Executive KPI Dashboard & Regional Profitability Matrix', 'Slide 9 of 14 [Code Output]');
 
-const cropTable = [
-  [
-    { text: 'Crop Name', options: { bold: true, fill: { color: NAVY }, color: WHITE } },
-    { text: 'Observations', options: { bold: true, fill: { color: NAVY }, color: WHITE } },
-    { text: 'Mean Yield (t/ha)', options: { bold: true, fill: { color: NAVY }, color: WHITE } },
-    { text: 'Market Price (INR/t)', options: { bold: true, fill: { color: NAVY }, color: WHITE } },
-    { text: 'Average Profit (INR)', options: { bold: true, fill: { color: NAVY }, color: WHITE } },
-    { text: 'Solvency Rate (%)', options: { bold: true, fill: { color: NAVY }, color: WHITE } }
-  ],
-  [
-    { text: 'Sugarcane', options: { bold: true } },
-    { text: '305' },
-    { text: '46.94 t/ha' },
-    { text: 'INR 3,500' },
-    { text: '+INR 8,17,188', options: { bold: true, color: GREEN } },
-    { text: '88.5%', options: { bold: true, color: GREEN } }
-  ],
-  [
-    { text: 'Chilli', options: { bold: true } },
-    { text: '412' },
-    { text: '1.54 t/ha' },
-    { text: 'INR 1,02,500' },
-    { text: '+INR 7,50,878', options: { bold: true, color: GREEN } },
-    { text: '82.0%', options: { bold: true, color: GREEN } }
-  ],
-  [
-    { text: 'Cotton', options: { bold: true } },
-    { text: '508' },
-    { text: '1.23 t/ha' },
-    { text: 'INR 67,500' },
-    { text: '+INR 1,24,547', options: { color: GREEN } },
-    { text: '65.4%' }
-  ],
-  [
-    { text: 'Groundnut', options: { bold: true } },
-    { text: '424' },
-    { text: '1.32 t/ha' },
-    { text: 'INR 55,500' },
-    { text: '+INR 44,858', options: { color: GREEN } },
-    { text: '59.2%' }
-  ],
-  [
-    { text: 'Pulses', options: { bold: true } },
-    { text: '496' },
-    { text: '0.92 t/ha' },
-    { text: 'INR 71,000' },
-    { text: '-INR 4,238' },
-    { text: '50.8%' }
-  ],
-  [
-    { text: 'Maize', options: { bold: true } },
-    { text: '551' },
-    { text: '2.72 t/ha' },
-    { text: 'INR 21,000' },
-    { text: '-INR 83,978', options: { color: RED } },
-    { text: '36.3%', options: { color: RED } }
-  ],
-  [
-    { text: 'Rice', options: { bold: true } },
-    { text: '690' },
-    { text: '2.44 t/ha' },
-    { text: 'INR 22,500' },
-    { text: '-INR 1,02,214', options: { color: RED } },
-    { text: '33.6%', options: { color: RED } }
-  ],
-  [
-    { text: 'Wheat', options: { bold: true } },
-    { text: '614' },
-    { text: '2.11 t/ha' },
-    { text: 'INR 24,000' },
-    { text: '-INR 1,23,398', options: { bold: true, color: RED } },
-    { text: '25.9%', options: { bold: true, color: RED } }
-  ]
-];
-slide.addTable(cropTable, { x: 0.8, y: 1.35, w: 11.7, h: 3.5, fontSize: 11, align: 'center', border: { pt: 1, color: 'CCCCCC' } });
+// Embed Image 3 (KPI cards + Figure 3A & 3B)
+slide.addImage({
+  path: IMG_KPI_REGIONAL,
+  x: 0.8, y: 1.1, w: 7.2, h: 3.5
+});
+
+slide.addShape(pres.ShapeType.roundRect, {
+  x: 8.2, y: 1.1, w: 4.3, h: 5.8, fill: { color: WHITE }, line: { color: 'B0BEC5' }
+});
 
 slide.addText([
-  { text: 'The Cereal Squeeze Phenomenon:\n', options: { bold: true, fontSize: 13.5, color: NAVY } },
-  { text: '• Staple foodgrains (Wheat, Rice, Maize) face a severe margin squeeze: high fixed irrigation and fertilizer costs exceed the realized market value, leading to low solvency (25.9%–36.3%).\n', options: { fontSize: 12 } },
-  { text: '• Cash crops (Sugarcane, Chilli, Cotton) provide the financial backbone of farmer viability, proving that crop selection and market price alignment dominate pure tonnage.', options: { fontSize: 12, bold: true } }
-], { x: 0.8, y: 5.1, w: 11.7, h: 2.0, color: DARK_GRAY });
+  { text: 'Dashboard & Regional Insights:\n', options: { bold: true, fontSize: 14, color: NAVY } },
+  { text: '• Top KPI Summary:\n', options: { bold: true, fontSize: 12.5, color: GREEN } },
+  { text: '  - Total Sector Revenue: ₹255.14 Crores\n  - Overall Farm Solvency Rate: 50.8%\n  - Average Water Productivity: 5.39 t/1000m³\n\n', options: { fontSize: 11.5 } },
+  { text: '• Figure 3A (State vs Season Matrix):\n', options: { bold: true, fontSize: 12.5, color: BLUE } },
+  { text: '  - Kharif is positive in every state (Telangana ₹26.4K/ha, Karnataka ₹24.5K/ha, Gujarat ₹23.5K/ha).\n  - Zaid summer losses hit Andhra Pradesh (-₹8.5K/ha), Gujarat (-₹7.5K/ha), and Telangana (-₹6.3K/ha) hardest.\n  - Punjab (+₹6.4K/ha) and Karnataka (+₹4.9K/ha) stay positive in summer due to robust tubewell/canal networks.\n\n', options: { fontSize: 11 } },
+  { text: '• Figure 3B (Irrigation Impact):\n', options: { bold: true, fontSize: 12.5, color: BLUE } },
+  { text: '  - Drip delivers ₹25,600/ha profit vs Flood at ₹8,800/ha (nearly 3x higher).', options: { fontSize: 11 } }
+], { x: 8.35, y: 1.25, w: 4.0, h: 5.5, color: DARK_GRAY });
+
+slide.addShape(pres.ShapeType.rect, { x: 0.8, y: 4.8, w: 7.2, h: 2.1, fill: { color: WHITE }, line: { color: 'CCCCCC' } });
+slide.addText([
+  { text: 'Core Takeaway from Dashboard:\n', options: { bold: true, fontSize: 13, color: NAVY } },
+  { text: 'Agricultural viability is determined by the intersection of ', options: { fontSize: 12 } },
+  { text: 'Season x Irrigation Method x State Infrastructure. ', options: { bold: true, fontSize: 12 } },
+  { text: 'Farms with modern drip irrigation in irrigated states maintain solvency even during hot summer cycles, while traditional flood-irrigated farms suffer heavy financial losses.', options: { fontSize: 12 } }
+], { x: 1.0, y: 4.9, w: 6.8, h: 1.9, color: DARK_GRAY });
 
 // ==========================================
-// Slide 10: Hypothesis Testing
+// Slide 10: RESULTS 5 - Statistical Hypothesis Testing
 // ==========================================
 slide = pres.addSlide();
-addSlideHeader(slide, 'Results: Formal Statistical Hypothesis Testing', 'Slide 10 of 14');
+addSlideHeader(slide, 'RESULTS: Formal Statistical Hypothesis Testing', 'Slide 10 of 14 [Statistical Proof]');
 
 slide.addText([
   { text: 'Hypothesis Framework:\n', options: { bold: true, fontSize: 14.5, color: NAVY } },
   { text: '• H0: Cropping season has no statistically significant effect on agricultural performance metrics.\n• H1: Statistically significant differences exist across Kharif, Rabi, and Zaid seasons (alpha = 0.05).', options: { fontSize: 13 } }
-], { x: 0.8, y: 1.2, w: 11.7, h: 0.8 });
+], { x: 0.8, y: 1.15, w: 11.7, h: 0.75 });
 
 const testTable = [
   [
@@ -408,12 +355,13 @@ const testTable = [
     { text: 'Reject H0 (p < 0.001)', options: { bold: true, color: GREEN } }
   ]
 ];
-slide.addTable(testTable, { x: 0.8, y: 2.1, w: 11.7, h: 3.1, fontSize: 11, align: 'center', border: { pt: 1, color: 'CCCCCC' } });
+slide.addTable(testTable, { x: 0.8, y: 2.0, w: 11.7, h: 3.1, fontSize: 11, align: 'center', border: { pt: 1, color: 'CCCCCC' } });
 
 slide.addText([
   { text: 'Empirical Verification:\n', options: { bold: true, fontSize: 13, color: NAVY } },
-  { text: '• While overall yield variance across all combined crops is dominated by sugarcane biomass, evaluating crops individually proves that seasonal decline (Kharif > Rabi > Zaid) is overwhelmingly statistically significant across all staples.', options: { fontSize: 12 } }
-], { x: 0.8, y: 5.4, w: 11.7, h: 1.5, color: DARK_GRAY });
+  { text: '• While overall yield variance across all combined crops is dominated by sugarcane biomass, evaluating crops individually proves that seasonal decline (Kharif > Rabi > Zaid) is overwhelmingly statistically significant across all staples.\n', options: { fontSize: 12 } },
+  { text: '• Both parametric (One-Way ANOVA) and non-parametric (Kruskal-Wallis) tests confirm that seasonal variations dictate crop yields, farm water requirements, and financial returns with >99.9% statistical confidence.', options: { fontSize: 12, bold: true } }
+], { x: 0.8, y: 5.3, w: 11.7, h: 1.6, color: DARK_GRAY });
 
 // ==========================================
 // Slide 11: Future Scope
@@ -440,10 +388,10 @@ scopeItems.forEach((item, idx) => {
 // ==========================================
 slide = pres.addSlide();
 addSlideHeader(slide, 'Project Deliverables & GitHub Repository', 'Slide 12 of 14');
-slide.addShape(pres.ShapeType.roundRect, { x: 0.8, y: 1.5, w: 11.7, h: 5.4, fill: { color: WHITE }, line: { color: 'B0BEC5' } });
-slide.addText('🔗 GitHub Repository URL:', { x: 1.2, y: 1.8, w: 10.9, h: 0.4, fontSize: 15, bold: true, color: NAVY });
+slide.addShape(pres.ShapeType.roundRect, { x: 0.8, y: 1.4, w: 11.7, h: 5.5, fill: { color: WHITE }, line: { color: 'B0BEC5' } });
+slide.addText('🔗 GitHub Repository URL:', { x: 1.2, y: 1.7, w: 10.9, h: 0.4, fontSize: 15, bold: true, color: NAVY });
 slide.addText('https://github.com/ocotpi/Seasonal-Agriculture-Performance-Analysis', {
-  x: 1.2, y: 2.25, w: 10.9, h: 0.5, fontSize: 14, color: BLUE, bold: true
+  x: 1.2, y: 2.15, w: 10.9, h: 0.5, fontSize: 14, color: BLUE, bold: true
 });
 
 slide.addText([
@@ -457,7 +405,7 @@ slide.addText([
   { text: '📁 requirements.txt                                 — Environment dependencies (pandas, numpy, matplotlib, seaborn, scipy)\n\n', options: { fontSize: 13 } },
   { text: 'Reproducibility Command:\n', options: { bold: true, fontSize: 13.5, color: NAVY } },
   { text: 'git clone https://github.com/ocotpi/Seasonal-Agriculture-Performance-Analysis.git\npip install -r requirements.txt', options: { fontSize: 12, color: '444444', italic: true } }
-], { x: 1.2, y: 2.85, w: 10.9, h: 3.9 });
+], { x: 1.2, y: 2.75, w: 10.9, h: 3.9 });
 
 // ==========================================
 // Slide 13: Certificate
@@ -495,27 +443,27 @@ slide.addText('✔ Verified & Completed', { x: 4.5, y: 6.0, w: 4.3, h: 0.4, font
 // ==========================================
 slide = pres.addSlide();
 slide.background = { color: 'F0F8FF' };
-slide.addShape(pres.ShapeType.rect, { x: 0, y: 0, w: '100%', h: 0.5, fill: { color: BLUE } });
+slide.addShape(pres.ShapeType.rect, { x: 0, y: 0, w: '100%', h: 0.45, fill: { color: BLUE } });
 slide.addText('Thank You!', {
-  x: 1.0, y: 1.8, w: 11.3, h: 1.2, fontSize: 40, color: NAVY, bold: true, align: 'center'
+  x: 1.0, y: 1.6, w: 11.3, h: 1.1, fontSize: 38, color: NAVY, bold: true, align: 'center'
 });
 slide.addText('Empirical Evidence for Climate-Resilient Agricultural Planning', {
-  x: 1.0, y: 3.0, w: 11.3, h: 0.5, fontSize: 18, color: '555555', italic: true, align: 'center'
+  x: 1.0, y: 2.75, w: 11.3, h: 0.5, fontSize: 17, color: '555555', italic: true, align: 'center'
 });
 
 const ackText = [
-  { text: 'Core Project Takeaway:\n', options: { bold: true, color: NAVY, fontSize: 15 } },
+  { text: 'Core Project Takeaway:\n', options: { bold: true, color: NAVY, fontSize: 14.5 } },
   { text: '\"Agricultural performance in India is structurally seasonal. By transitioning from open flood irrigation to precision drip emitters and rotating water-intensive staples into summer cash crops, smallholder farm solvency can be increased by over 30%.\"\n\n', options: { italic: true, fontSize: 13 } },
-  { text: 'Acknowledgements:\n', options: { bold: true, color: NAVY, fontSize: 15 } },
+  { text: 'Acknowledgements:\n', options: { bold: true, color: NAVY, fontSize: 14.5 } },
   { text: 'Sincere gratitude to AICTE, Edunet Foundation, and Vodafone Idea Foundation (VOIS for Tech Program) for mentorship and project support.\n\n', options: { fontSize: 13 } },
   { text: 'Student Contact: ', options: { bold: true, color: NAVY, fontSize: 13.5 } },
   { text: 'Asmi Sharma | Chandigarh University (STU6a65f9036e5721785067779)', options: { fontSize: 13.5 } }
 ];
 slide.addText(ackText, {
-  x: 1.8, y: 3.7, w: 9.7, h: 2.8, fill: { color: WHITE }, line: { color: 'CCCCCC', width: 1 },
+  x: 1.8, y: 3.4, w: 9.7, h: 3.1, fill: { color: WHITE }, line: { color: 'CCCCCC', width: 1 },
   margin: 15, align: 'center'
 });
 
 pres.writeFile({ fileName: 'Seasonal_Agriculture_Performance_Analysis_Presentation.pptx' })
-  .then(fileName => console.log('Successfully generated PPTX:', fileName))
+  .then(fileName => console.log('Successfully generated PPTX with embedded Colab screenshots:', fileName))
   .catch(err => console.error('Error generating PPTX:', err));
